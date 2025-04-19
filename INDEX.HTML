@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laugh Out Loud - Random Jokes</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+        
+        header {
+            background-color: #4CAF50;
+            color: white;
+            width: 100%;
+            padding: 1rem 0;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        
+        h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+        
+        h2 {
+            color: #333;
+            margin-bottom: 1.5rem;
+        }
+        
+        .joke-container {
+            background-color: #f9f9f9;
+            border-left: 4px solid #4CAF50;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 4px;
+            min-height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .joke-text {
+            font-size: 1.2rem;
+            line-height: 1.6;
+        }
+        
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        button:hover {
+            background-color: #45a049;
+        }
+        
+        footer {
+            margin-top: auto;
+            width: 100%;
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1rem 0;
+        }
+        
+        .emoji {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Laugh Out Loud</h1>
+    </header>
+    
+    <div class="container">
+        <div class="emoji">😂</div>
+        <h2>Your Daily Dose of Humor</h2>
+        
+        <div class="joke-container">
+            <p id="joke-text" class="joke-text">Why don't scientists trust atoms? Because they make up everything!</p>
+        </div>
+        
+        <button id="new-joke-btn">Get Another Joke</button>
+    </div>
+    
+    <footer>
+        <p>&copy; 2025 Laugh Out Loud - All jokes intended!</p>
+    </footer>
+    
+    <script>
+        // jokes
+        const jokes = [
+            "Why don't scientists trust atoms? Because they make up everything!",
+            "I told my wife she was drawing her eyebrows too high. She looked surprised.",
+            "What do you call a fake noodle? An impasta!",
+            "Why did the scarecrow win an award? Because he was outstanding in his field!",
+            "I'm reading a book about anti-gravity. It's impossible to put down!",
+            "Did you hear about the mathematician who's afraid of negative numbers? He'll stop at nothing to avoid them.",
+            "Why don't skeletons fight each other? They don't have the guts.",
+            "What's the best thing about Switzerland? I don't know, but the flag is a big plus.",
+            "How do you organize a space party? You planet!",
+            "Why did the bicycle fall over? Because it was two-tired!",
+            "What did one wall say to the other wall? I'll meet you at the corner!",
+            "How do you make a tissue dance? Put a little boogie in it!",
+            "What do you call cheese that isn't yours? Nacho cheese!",
+            "Why couldn't the leopard play hide and seek? Because he was always spotted.",
+            "What do you call a bear with no teeth? A gummy bear!"
+        ];
+        
+        // Function to get a random joke
+        function getRandomJoke() {
+            const randomIndex = Math.floor(Math.random() * jokes.length);
+            return jokes[randomIndex];
+        }
+        
+        // Get DOM elements
+        const jokeText = document.getElementById('joke-text');
+        const newJokeBtn = document.getElementById('new-joke-btn');
+        
+        // Add event listener to button
+        newJokeBtn.addEventListener('click', function() {
+            // Change the joke text with animation
+            jokeText.style.opacity = '0';
+            
+            setTimeout(function() {
+                jokeText.textContent = getRandomJoke();
+                jokeText.style.opacity = '1';
+            }, 300);
+        });
+        
+        // Set initial joke on page load
+        window.onload = function() {
+            jokeText.textContent = getRandomJoke();
+        };
+    </script>
+</body>
+</html>
